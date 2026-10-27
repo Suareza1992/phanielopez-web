@@ -1,0 +1,170 @@
+<!doctype html>
+<!-- F1 Girlies PR page. Rendered by server/content.js (t: text, a: attribute, > shared partial from views/partials/).
+     Texts: server/content-schema.js (girlies.*). Live lists (watch parties, quiniela, photos): public/girlies.js + server/community.js -->
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{t:girlies.meta.title}}</title>
+  <meta name="description" content="{{a:girlies.meta.description}}">
+  <meta name="theme-color" content="#6E3FD1">
+  <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="/fonts/roboto-serif-display-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/manrope-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="{{v:/styles.css}}">
+  <link rel="stylesheet" href="{{v:/girlies.css}}">
+</head>
+<body class="page-girlies">
+
+  {{> sprite}}
+  {{> nav}}
+
+  <main>
+    <!-- HERO + JOIN -->
+    <section class="g-hero">
+      <div class="g-hero__text">
+        <p class="eyebrow eyebrow--light">
+          <svg class="eyebrow__heart" aria-hidden="true"><use href="#heart"/></svg>
+          <span data-k="girlies.eyebrow">{{t:girlies.eyebrow}}</span>
+        </p>
+        <h1 class="display"><span data-k="girlies.title">{{t:girlies.title}}</span> <em data-k="girlies.titleAccent">{{t:girlies.titleAccent}}</em></h1>
+        <p class="lede" data-k="girlies.lede">{{t:girlies.lede}}</p>
+        <div class="actions">
+          <a class="btn btn--lime js-ig" href="{{a:girlies.igLink}}" data-k-href="girlies.igLink" data-soon="{{a:girlies.igSoon}}" target="_blank" rel="noopener"><span data-k="girlies.igCta">{{t:girlies.igCta}}</span> <span aria-hidden="true">↗</span></a>
+          <a class="link g-link-light" href="#watch-parties">Próximos watch parties <span aria-hidden="true">↓</span></a>
+        </div>
+      </div>
+      <div class="g-hero__media">
+        <img src="{{a:girlies.image}}" alt="{{a:girlies.image.alt}}" data-k="girlies.image" fetchpriority="high" decoding="async">
+      </div>
+    </section>
+
+    <nav class="g-jump wrap" aria-label="Secciones de la página">
+      <a href="#watch-parties">Watch parties</a>
+      <a href="#quiniela">Quiniela</a>
+      <a href="#fotos">Fotos</a>
+      <a href="#preguntas">Preguntas</a>
+    </nav>
+
+    <!-- WHAT WE DO -->
+    <section class="g-what wrap" id="que-hacemos">
+      <p class="eyebrow" data-k="girlies.what.eyebrow">{{t:girlies.what.eyebrow}}</p>
+      <h2 class="display display--md" data-k="girlies.what.title">{{t:girlies.what.title}}</h2>
+      <div class="g-what__grid">
+        <article class="g-what__item">
+          <span class="g-what__num" aria-hidden="true">01</span>
+          <h3 data-k="girlies.what1.title">{{t:girlies.what1.title}}</h3>
+          <p data-k="girlies.what1.text">{{t:girlies.what1.text}}</p>
+        </article>
+        <article class="g-what__item">
+          <span class="g-what__num" aria-hidden="true">02</span>
+          <h3 data-k="girlies.what2.title">{{t:girlies.what2.title}}</h3>
+          <p data-k="girlies.what2.text">{{t:girlies.what2.text}}</p>
+        </article>
+        <article class="g-what__item">
+          <span class="g-what__num" aria-hidden="true">03</span>
+          <h3 data-k="girlies.what3.title">{{t:girlies.what3.title}}</h3>
+          <p data-k="girlies.what3.text">{{t:girlies.what3.text}}</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- WATCH PARTIES -->
+    <section class="g-events" id="watch-parties">
+      <div class="wrap">
+        <div class="g-head">
+          <div>
+            <p class="eyebrow" data-k="girlies.events.eyebrow">{{t:girlies.events.eyebrow}}</p>
+            <h2 class="display display--md" data-k="girlies.events.title">{{t:girlies.events.title}}</h2>
+          </div>
+          <p class="g-head__blurb" data-k="girlies.events.blurb">{{t:girlies.events.blurb}}</p>
+        </div>
+        <div class="g-events__list" id="events" aria-live="polite"><p class="g-muted">Cargando…</p></div>
+        <p class="g-empty" id="events-empty" data-k="girlies.events.empty" hidden>{{t:girlies.events.empty}}</p>
+      </div>
+    </section>
+
+    <!-- QUINIELA -->
+    <section class="g-quiniela" id="quiniela">
+      <div class="wrap">
+        <div class="g-head">
+          <div>
+            <p class="eyebrow eyebrow--light" data-k="girlies.quiniela.eyebrow">{{t:girlies.quiniela.eyebrow}}</p>
+            <h2 class="display display--md" data-k="girlies.quiniela.title">{{t:girlies.quiniela.title}}</h2>
+          </div>
+          <p class="g-head__blurb" data-k="girlies.quiniela.rules">{{t:girlies.quiniela.rules}}</p>
+        </div>
+        <div class="g-q" id="quiniela-app" aria-live="polite"><p class="g-muted">Cargando…</p></div>
+      </div>
+    </section>
+
+    <!-- PHOTO WALL -->
+    <section class="g-photos wrap" id="fotos">
+      <div class="g-head">
+        <div>
+          <p class="eyebrow" data-k="girlies.photos.eyebrow">{{t:girlies.photos.eyebrow}}</p>
+          <h2 class="display display--md" data-k="girlies.photos.title">{{t:girlies.photos.title}}</h2>
+        </div>
+        <p class="g-head__blurb" data-k="girlies.photos.blurb">{{t:girlies.photos.blurb}}</p>
+      </div>
+      <div class="g-photos__grid" id="photo-grid"></div>
+      <p class="g-empty" id="photos-empty" data-k="girlies.photos.empty" hidden>{{t:girlies.photos.empty}}</p>
+
+      <details class="g-share">
+        <summary>📷 Comparte tu foto</summary>
+        <form class="g-form" id="photo-form" novalidate>
+          <label class="g-field"><span>Tu foto</span><input type="file" name="photo" accept="image/*" required></label>
+          <label class="g-field"><span>¿Qué está pasando? <em>(opcional)</em></span><input type="text" name="caption" maxlength="140" placeholder="Watch party del GP de México"></label>
+          <label class="g-field"><span>Tu Instagram para darte crédito <em>(opcional)</em></span><input type="text" name="credit" maxlength="40" placeholder="@tuusuario" autocapitalize="off"></label>
+          <label class="g-check"><input type="checkbox" name="consent" required> <span>Tomé esta foto y las personas que salen en ella están de acuerdo con que se publique.</span></label>
+          <p class="g-error" role="alert" hidden></p>
+          <button class="btn btn--dark" type="submit">Enviar foto</button>
+        </form>
+      </details>
+    </section>
+
+    <!-- TESTIMONIALS + FAQ -->
+    <section class="g-voices">
+      <div class="wrap">
+        <div class="g-reactions">
+          <h2 class="display display--md">Reacciones</h2>
+          <div class="g-quotes">
+          <figure><blockquote data-k="girlies.quote1.text">{{t:girlies.quote1.text}}</blockquote><figcaption data-k="girlies.quote1.name">{{t:girlies.quote1.name}}</figcaption></figure>
+          <figure><blockquote data-k="girlies.quote2.text">{{t:girlies.quote2.text}}</blockquote><figcaption data-k="girlies.quote2.name">{{t:girlies.quote2.name}}</figcaption></figure>
+          <figure><blockquote data-k="girlies.quote3.text">{{t:girlies.quote3.text}}</blockquote><figcaption data-k="girlies.quote3.name">{{t:girlies.quote3.name}}</figcaption></figure>
+          </div>
+        </div>
+        <div class="g-faq" id="preguntas">
+          <h2 class="display display--md">Preguntas</h2>
+          <div class="g-faq__list">
+          <details><summary data-k="girlies.faq1.q">{{t:girlies.faq1.q}}</summary><p data-k="girlies.faq1.a">{{t:girlies.faq1.a}}</p></details>
+          <details><summary data-k="girlies.faq2.q">{{t:girlies.faq2.q}}</summary><p data-k="girlies.faq2.a">{{t:girlies.faq2.a}}</p></details>
+          <details><summary data-k="girlies.faq3.q">{{t:girlies.faq3.q}}</summary><p data-k="girlies.faq3.a">{{t:girlies.faq3.a}}</p></details>
+          <details><summary data-k="girlies.faq4.q">{{t:girlies.faq4.q}}</summary><p data-k="girlies.faq4.a">{{t:girlies.faq4.a}}</p></details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="g-final">
+      <div class="wrap g-final__inner">
+        <h2 class="display display--md" data-k="girlies.final.title">{{t:girlies.final.title}}</h2>
+        <p class="lede" data-k="girlies.final.lede">{{t:girlies.final.lede}}</p>
+        <a class="btn btn--lime js-ig" href="{{a:girlies.igLink}}" data-k-href="girlies.igLink" data-soon="{{a:girlies.igSoon}}" target="_blank" rel="noopener"><span data-k="girlies.igCta">{{t:girlies.igCta}}</span> <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  </main>
+
+  {{> footer}}
+
+  <dialog class="g-lightbox" id="lightbox" aria-label="Foto ampliada">
+    <button class="g-lightbox__close" type="button" aria-label="Cerrar">✕</button>
+    <img src="" alt="">
+    <p class="g-lightbox__caption"></p>
+  </dialog>
+
+  <script src="{{v:/nav.js}}" defer></script>
+  <script type="module" src="{{v:/girlies.js}}"></script>
+</body>
+</html>

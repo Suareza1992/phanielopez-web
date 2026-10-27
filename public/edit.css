@@ -1,0 +1,83 @@
+/* On-page editor (only loaded for a signed-in admin) */
+.pl-bar {
+  position: fixed; z-index: var(--z-overlay, 1000); left: 50%; bottom: 16px; transform: translateX(-50%);
+  display: flex; align-items: center; gap: .9rem;
+  max-width: calc(100vw - 24px);
+  padding: .55rem .6rem .55rem 1rem;
+  background: #111; color: #fff; border: 1px solid #333; border-radius: 999px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .35);
+  font: 600 .85rem/1 "Manrope", system-ui, sans-serif;
+}
+.pl-bar__dot { width: 9px; height: 9px; border-radius: 50%; background: #C8F000; flex: none; }
+.pl-bar__switch { display: flex; align-items: center; gap: .45rem; cursor: pointer; white-space: nowrap; }
+.pl-bar__switch input { accent-color: #C8F000; width: 18px; height: 18px; }
+.pl-bar__hint { color: #9a9a9a; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+body:not(.pl-editing) .pl-bar__hint { display: none; }
+.pl-bar__btn {
+  background: #222; color: #fff; border: 1px solid #3a3a3a; border-radius: 999px;
+  padding: .5rem .85rem; font: inherit; text-decoration: none; cursor: pointer; white-space: nowrap;
+}
+.pl-bar__btn:hover { border-color: #C8F000; color: #C8F000; }
+
+/* editable spots */
+.pl-editing [data-k], .pl-editing [data-k-href] { cursor: pointer; }
+.pl-editing [data-k]:not(img) { outline: 1.5px dashed rgba(110, 63, 209, .75); outline-offset: 3px; border-radius: 2px; }
+.pl-editing img[data-k] { outline: 3px dashed rgba(110, 63, 209, .85); outline-offset: -3px; }
+.pl-editing [data-k-href]:not(:has([data-k])) { outline: 1.5px dashed rgba(200, 240, 0, .8); outline-offset: 3px; }
+.pl-editing [data-k]:hover { outline-style: solid; outline-color: #6E3FD1; background-color: rgba(110, 63, 209, .08); }
+.pl-editing [data-k-href]:hover { outline-style: solid; }
+/* photos that sit under overlays must still be clickable while editing */
+.pl-editing .hero__media::after { pointer-events: none; }
+.pl-editing .hero__media, .pl-editing .cta__flag { z-index: 2; }
+
+/* social icons without a link are hidden for visitors; show them faded so the owner can add one */
+.pl-editing .social a[href="#"] { display: grid; opacity: .45; }
+
+/* modal */
+.pl-modal {
+  width: min(520px, calc(100vw - 24px)); max-height: calc(100vh - 32px);
+  padding: 0; border: 1px solid #333; border-radius: 12px;
+  background: #151515; color: #fff;
+  font: 400 .95rem/1.45 "Manrope", system-ui, sans-serif;
+}
+.pl-modal::backdrop { background: rgba(0, 0, 0, .6); backdrop-filter: blur(2px); }
+.pl-form { display: flex; flex-direction: column; gap: 1rem; padding: 1.4rem; }
+.pl-title { margin: 0; font: 700 1.1rem/1 "Manrope", system-ui, sans-serif; color: #C8F000; }
+.pl-field { display: flex; flex-direction: column; gap: .4rem; }
+.pl-label { font-weight: 700; font-size: .85rem; }
+.pl-label em { font-weight: 400; font-style: normal; color: #9a9a9a; }
+.pl-field input[type="text"], .pl-field input[type="url"], .pl-field input[type="email"], .pl-field textarea {
+  width: 100%; padding: .7rem .8rem; border: 1px solid #3a3a3a; border-radius: 6px;
+  background: #0d0d0d; color: #fff; font: inherit;
+}
+.pl-field textarea { resize: vertical; min-height: 6rem; }
+.pl-field input:focus, .pl-field textarea:focus { outline: 2px solid #C8F000; outline-offset: 1px; border-color: transparent; }
+.pl-help { color: #9a9a9a; font-size: .8rem; }
+.pl-preview { width: 100%; max-height: 220px; object-fit: cover; border-radius: 6px; background: #0d0d0d; }
+.pl-upload span {
+  display: inline-block; padding: .7rem 1rem; border-radius: 6px; cursor: pointer;
+  background: #C8F000; color: #111; font-weight: 800;
+}
+.pl-upload:focus-within span { outline: 2px solid #fff; outline-offset: 2px; }
+.pl-field.is-busy .pl-upload span::after { content: " · subiendo…"; }
+.pl-field.is-busy .pl-preview { opacity: .4; }
+.pl-link { align-self: flex-start; background: none; border: 0; padding: 0; color: #b9a3ff; font: inherit; font-size: .85rem; cursor: pointer; text-decoration: underline; }
+.pl-error { margin: 0; padding: .6rem .8rem; border-radius: 6px; background: #3a1010; color: #ffb4b4; font-size: .88rem; }
+.pl-actions { display: flex; justify-content: flex-end; gap: .6rem; }
+.pl-btn { padding: .75rem 1.2rem; border-radius: 6px; border: 0; background: #C8F000; color: #111; font: 800 .92rem/1 "Manrope", system-ui, sans-serif; cursor: pointer; }
+.pl-btn:disabled { opacity: .6; cursor: wait; }
+.pl-btn--ghost { background: none; color: #fff; border: 1px solid #444; }
+
+.pl-toast {
+  position: fixed; z-index: var(--z-toast, 1100); left: 50%; bottom: 80px; transform: translate(-50%, 20px);
+  padding: .7rem 1.1rem; border-radius: 8px; background: #C8F000; color: #111;
+  font: 700 .9rem/1 "Manrope", system-ui, sans-serif;
+  opacity: 0; pointer-events: none; transition: opacity .2s, transform .2s;
+}
+.pl-toast[data-kind="error"] { background: #ffb4b4; }
+.pl-toast.is-on { opacity: 1; transform: translate(-50%, 0); }
+
+@media (max-width: 760px) {
+  .pl-bar { gap: .5rem; padding-left: .8rem; font-size: .8rem; }
+  .pl-bar__hint { display: none; }
+}

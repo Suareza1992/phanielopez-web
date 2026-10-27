@@ -1,0 +1,204 @@
+<!doctype html>
+<!-- Template rendered by server/content.js: {{t:key}} = text, {{a:key}} = attribute. Keys + defaults: server/content-schema.js -->
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{t:meta.title}}</title>
+  <meta name="description" content="{{a:meta.description}}">
+  <meta name="site-tagline" content="{{a:brand.tagline}}">
+  <meta name="theme-color" content="#111111">
+  <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+  <!-- Fonts are self-hosted; preloading the two above-the-fold ones avoids a late text swap. -->
+  <link rel="preload" href="/fonts/roboto-serif-display-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/manrope-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="{{v:/styles.css}}">
+</head>
+<body>
+
+  {{> sprite}}
+
+  {{> nav}}
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero__media" aria-hidden="true">
+        <!-- FOTO · reemplazar con foto original en alta resolución -->
+        <img src="{{a:hero.image}}" alt="{{a:hero.image.alt}}" data-k="hero.image" fetchpriority="high" decoding="async">
+      </div>
+      <span class="hero__tag" data-k="hero.tag">{{t:hero.tag}}</span>
+      <div class="wrap hero__content">
+        <p class="eyebrow" data-k="hero.eyebrow">{{t:hero.eyebrow}}</p>
+        <h1 class="display"><span data-k="hero.title">{{t:hero.title}}</span> <em data-k="hero.titleAccent">{{t:hero.titleAccent}}</em></h1>
+        <p class="lede" data-k="hero.lede">{{t:hero.lede}}</p>
+        <div class="actions">
+          <a class="btn btn--lime" href="{{a:hero.ctaLink}}" data-k-href="hero.ctaLink"><span data-k="hero.cta">{{t:hero.cta}}</span> <span aria-hidden="true">→</span></a>
+          <a class="link" href="{{a:hero.linkHref}}" data-k-href="hero.linkHref"><span data-k="hero.link">{{t:hero.link}}</span> <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEXT-RACE CRAWL (filled by main.js from f1-2026.js) -->
+    <section class="crawl" aria-label="Próxima carrera de F1">
+      <a class="crawl__label" href="#calendario">
+        <span class="crawl__dot" aria-hidden="true"></span>
+        <span class="crawl__label-text">Próxima carrera</span>
+      </a>
+      <div class="crawl__track">
+        <div class="crawl__belt">
+          <ul class="crawl__group">
+            <li><strong>Calendario F1 2026</strong></li>
+            <li>{{t:brand.tagline}}</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHANIE F101 -->
+    <section class="f101 wrap" id="f101">
+      <div class="f101__head">
+        <div>
+          <p class="eyebrow" data-k="f101.eyebrow">{{t:f101.eyebrow}}</p>
+          <h2 class="display display--md"><span data-k="f101.title">{{t:f101.title}}</span> <em data-k="f101.titleAccent">{{t:f101.titleAccent}}</em></h2>
+        </div>
+        <p class="f101__blurb" data-k="f101.blurb">{{t:f101.blurb}}</p>
+      </div>
+
+      <div class="cards">
+        <article class="card">
+          <a class="card__media" href="{{a:card1.link}}" data-k-href="card1.link" aria-label="Ver: {{a:card1.title}}">
+            <img src="{{a:card1.image}}" alt="{{a:card1.image.alt}}" data-k="card1.image" loading="lazy" decoding="async">
+            <span class="play" aria-hidden="true"></span>
+          </a>
+          <h3 data-k="card1.title">{{t:card1.title}}</h3>
+          <a class="link link--sm" href="{{a:card1.link}}" data-k-href="card1.link"><span data-k="cards.more">{{t:cards.more}}</span> <span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="card">
+          <a class="card__media" href="{{a:card2.link}}" data-k-href="card2.link" aria-label="Ver: {{a:card2.title}}">
+            <img src="{{a:card2.image}}" alt="{{a:card2.image.alt}}" data-k="card2.image" loading="lazy" decoding="async">
+            <span class="play" aria-hidden="true"></span>
+          </a>
+          <h3 data-k="card2.title">{{t:card2.title}}</h3>
+          <a class="link link--sm" href="{{a:card2.link}}" data-k-href="card2.link"><span data-k="cards.more">{{t:cards.more}}</span> <span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="card">
+          <a class="card__media" href="{{a:card3.link}}" data-k-href="card3.link" aria-label="Ver: {{a:card3.title}}">
+            <img src="{{a:card3.image}}" alt="{{a:card3.image.alt}}" data-k="card3.image" loading="lazy" decoding="async">
+            <span class="play" aria-hidden="true"></span>
+          </a>
+          <h3 data-k="card3.title">{{t:card3.title}}</h3>
+          <a class="link link--sm" href="{{a:card3.link}}" data-k-href="card3.link"><span data-k="cards.more">{{t:cards.more}}</span> <span aria-hidden="true">↗</span></a>
+        </article>
+      </div>
+    </section>
+
+    <!-- CALENDARIO 2026 (cards rendered by main.js) -->
+    <section class="calendar" id="calendario">
+      <div class="wrap">
+        <div class="calendar__head">
+          <div>
+            <p class="eyebrow eyebrow--light" data-k="calendar.eyebrow">{{t:calendar.eyebrow}}</p>
+            <h2 class="display display--md"><span data-k="calendar.title">{{t:calendar.title}}</span> <em data-k="calendar.titleAccent">{{t:calendar.titleAccent}}</em></h2>
+          </div>
+          <p class="calendar__blurb" data-k="calendar.blurb">{{t:calendar.blurb}}</p>
+        </div>
+      </div>
+
+      <div class="carousel" role="region" aria-roledescription="carrusel" aria-label="Calendario de carreras 2026">
+        <div class="carousel__stage" tabindex="0" aria-label="Usa las flechas del teclado para girar el calendario">
+          <div class="ring" id="calendar-ring">
+            <noscript><p class="calendar__blurb">Activa JavaScript para ver el calendario.</p></noscript>
+          </div>
+        </div>
+        <div class="carousel__controls wrap">
+          <button class="carousel__btn" type="button" data-dir="-1" aria-label="Carrera anterior">←</button>
+          <p class="carousel__status" id="carousel-status" aria-live="polite"></p>
+          <button class="carousel__btn" type="button" data-dir="1" aria-label="Carrera siguiente">→</button>
+          <button class="carousel__home" type="button" id="carousel-home">Ir a la próxima carrera</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMUNIDAD -->
+    <section class="community" id="comunidad">
+      <div class="community__text">
+        <p class="eyebrow eyebrow--light">
+          <svg class="eyebrow__heart" aria-hidden="true"><use href="#heart"/></svg>
+          <span data-k="community.eyebrow">{{t:community.eyebrow}}</span>
+        </p>
+        <h2 class="display display--md" data-k="community.title">{{t:community.title}}</h2>
+        <p class="lede" data-k="community.lede">{{t:community.lede}}</p>
+        <a class="btn btn--lime" href="{{a:community.ctaLink}}" data-k-href="community.ctaLink"><span data-k="community.cta">{{t:community.cta}}</span> <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="community__media">
+        <!-- FOTO · watch party de la comunidad -->
+        <img src="{{a:community.image}}" alt="{{a:community.image.alt}}" data-k="community.image" loading="lazy" decoding="async">
+        <span class="chip" data-k="community.chip">{{t:community.chip}}</span>
+      </div>
+    </section>
+
+    <div class="closing">
+      <!-- SOBRE MÍ + BOXTALKPR -->
+      <section class="about wrap" id="sobre-mi">
+        <div class="about__text">
+          <p class="eyebrow" data-k="about.eyebrow">{{t:about.eyebrow}}</p>
+          <h2 class="display display--md" data-k="about.title">{{t:about.title}}</h2>
+          <p data-k="about.body">{{t:about.body}}</p>
+          <span class="rule" aria-hidden="true"></span>
+          <p class="about__note" data-k="about.note">{{t:about.note}}</p>
+        </div>
+        <a class="podcast" href="{{a:podcast.link}}" data-k-href="podcast.link" aria-label="Escucha {{a:podcast.brand}}">
+          <div class="podcast__text">
+            <p class="podcast__brand" data-k="podcast.brand">{{t:podcast.brand}}</p>
+            <h3 data-k="podcast.title">{{t:podcast.title}}</h3>
+            <p data-k="podcast.body">{{t:podcast.body}}</p>
+          </div>
+          <img src="{{a:podcast.image}}" alt="{{a:podcast.image.alt}}" data-k="podcast.image" loading="lazy" decoding="async">
+        </a>
+      </section>
+
+      <!-- CTA -->
+      <section class="cta" id="colaboremos">
+        <img class="cta__flag" src="{{a:cta.image}}" alt="{{a:cta.image.alt}}" data-k="cta.image" loading="lazy" decoding="async">
+        <div class="wrap cta__inner">
+          <h2 class="display display--md" data-k="cta.title">{{t:cta.title}}</h2>
+          <p class="lede" data-k="cta.lede">{{t:cta.lede}}</p>
+          <a class="btn btn--lime" href="mailto:{{a:cta.email}}" data-k-href="cta.email"><span data-k="cta.button">{{t:cta.button}}</span> <span aria-hidden="true">↗</span></a>
+        </div>
+      </section>
+
+      <!-- Phone preview (desktop only, decorative) -->
+      <div class="phone" aria-hidden="true">
+        <div class="phone__screen">
+          <div class="phone__notch"></div>
+          <div class="phone__bar">
+            <span class="logo logo--xs">phanie lópez<svg class="logo__heart"><use href="#heart"/></svg></span>
+            <span class="phone__burger"><i></i><i></i><i></i></span>
+          </div>
+          <div class="phone__body">
+            <p class="eyebrow">{{t:hero.eyebrow}}</p>
+            <p class="display phone__h">{{t:hero.title}} <em>{{t:hero.titleAccent}}</em></p>
+            <p class="phone__p">{{t:hero.lede}}</p>
+            <span class="btn btn--lime btn--xs">{{t:hero.cta}} →</span>
+            <span class="link link--xs">{{t:hero.link}} ↗</span>
+          </div>
+          <div class="phone__img">
+            <img src="{{a:hero.image}}" alt="" loading="lazy" decoding="async">
+            <span class="hero__tag hero__tag--xs">{{t:hero.tag}}</span>
+          </div>
+          <div class="ticker ticker--xs">
+            <span class="checkers"></span><p>{{t:brand.tagline}}</p><span class="checkers"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  {{> footer}}
+
+  <script src="{{v:/nav.js}}" defer></script>
+  <script src="{{v:/f1-2026.js}}" defer></script>
+  <script src="{{v:/main.js}}" defer></script>
+</body>
+</html>

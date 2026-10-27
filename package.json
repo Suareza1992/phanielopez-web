@@ -1,0 +1,19 @@
+{
+  "name": "phanielopez.com",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "phanielopez.com: Express + SQLite server, on-page content editor for the owner",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "start": "node --disable-warning=ExperimentalWarning --env-file-if-exists=.env server/index.js",
+    "dev": "node --watch --disable-warning=ExperimentalWarning --env-file-if-exists=.env server/index.js",
+    "admin:invite": "node --disable-warning=ExperimentalWarning --env-file-if-exists=.env scripts/admin-invite.js"
+  },
+  "dependencies": {
+    "compression": "^1.8.2",
+    "express": "^4.21.2"
+  }
+}
